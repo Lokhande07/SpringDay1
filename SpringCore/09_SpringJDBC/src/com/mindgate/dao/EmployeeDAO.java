@@ -22,7 +22,9 @@ public class EmployeeDAO implements EmployeeDAOInterface {
 	private static final String INSERT_EMPLOYEE = "Insert into employee_details(name,salary) Values(?,?)";
 	private static final String SELECT_ALL_EMPLOYEE = "Select * from employee_details";
 	private static final String SELECT_SINGLE_EMPLOYEE = "Select * from employee_details where employee_id=?";
-
+	private static final String UPDATE_EMPLOYEE="UPDATE employee_details set name=?,salary=? where employee_id=?";
+	private static final String DELETE_EMPLOYEE="DELETE employee_details where employee_id=? ";
+	
 	public EmployeeDAO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -56,6 +58,26 @@ public class EmployeeDAO implements EmployeeDAOInterface {
 		Object[] args = { employeeId };
 		Employee employee = jdbcTemplate.queryForObject(SELECT_SINGLE_EMPLOYEE, args, new EmployeeRowMapper());
 		return employee;
+	}
+
+	@Override
+	public boolean updateEmployee(Employee employee) {
+		Object[] args = { employee.getName(),employee.getSalary(),employee.getEmployeeId() };
+		resultCount = jdbcTemplate.update(UPDATE_EMPLOYEE, args);
+		if (resultCount > 0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean deleteEmployeeByEmployeeId(int employeeId) {
+		Object[] args = {employeeId };
+		resultCount = jdbcTemplate.update(DELETE_EMPLOYEE, args);
+		if (resultCount > 0)
+			return true;
+		else
+			return false;
 	}
 
 }

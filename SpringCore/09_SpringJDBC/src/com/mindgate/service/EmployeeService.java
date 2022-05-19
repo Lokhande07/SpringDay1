@@ -33,4 +33,14 @@ public class EmployeeService implements EmployeeServiceInterface {
 		return employeeDAOInterface.getEmployeeByEmployee(employeeId);
 	}
 
+	@Override
+	public boolean updateEmployee(Employee employee) {
+		return employeeDAOInterface.updateEmployee(employee);
+	}
+
+	@Override
+	public boolean deleteEmployeeByEmployeeId(int employeeId) {
+		return employeeDAOInterface.deleteEmployeeByEmployeeId(employeeId);
+	}
+
 }

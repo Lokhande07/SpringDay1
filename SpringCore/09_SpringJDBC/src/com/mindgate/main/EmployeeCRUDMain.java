@@ -32,12 +32,34 @@ public class EmployeeCRUDMain {
 		}
 
 		System.out.println("-".repeat(100));
-		try {
-			Employee emp = employeeServiceInterface.getEmployeeByEmployee(5);
-			System.out.println(emp);
-		} catch (Exception e) {
-			System.out.println("Exception");
-			System.out.println(e.getMessage());
+		
+		
+		
+//		try {
+//			Employee emp = employeeServiceInterface.getEmployeeByEmployee(5);
+//			System.out.println(emp);
+//		} catch (Exception e) {
+//			System.out.println("Exception");
+//			System.out.println(e.getMessage());
+//		}
+//		System.out.println("-".repeat(100));
+//		
+		
+//		Employee empup=new Employee(86,	"LOKU",199);
+//		boolean result = employeeServiceInterface.updateEmployee(empup);
+//		if (result) {
+//			System.out.println("Employee updat Successfully");
+//		} else {
+//			System.out.println("Employee Fail to updat");
+//		}
+		
+		
+//		Employee empdele=new Employee();
+		boolean result = employeeServiceInterface.deleteEmployeeByEmployeeId(86);
+		if (result) {
+			System.out.println("Employee delet Successfully");
+		} else {
+			System.out.println("Employee delet to updat");
 		}
 		
 	}
